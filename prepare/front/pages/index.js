@@ -1,8 +1,12 @@
 // import React from 'react' next는 필요없음.
 
+import AppLayout from "../component/AppLayout";
+
 const Home = () => {
     return (
-        <div>Hello, Next</div>
+        <AppLayout>
+            <div>Hello, Next</div>            
+        </AppLayout>
     );
 }
 
