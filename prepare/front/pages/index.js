@@ -1,5 +1,4 @@
-// import React from 'react' next는 필요없음.
-
+import React from 'react';
 import AppLayout from "../component/AppLayout";
 
 const Home = () => {
