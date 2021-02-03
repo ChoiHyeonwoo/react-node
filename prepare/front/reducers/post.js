@@ -1,3 +1,5 @@
+//User, Images,Comments는 다른 객체들과 조합해서 Back에서 전달받기 때문에 대문자로 표현(sequalize)
+// 1. 데이터 구성 2. 액션구성 (리듀서 구성 시)
 export const initialState = {
     mainPosts: [{
       id: 1,
@@ -50,8 +52,8 @@ export const initialState = {
     switch (action.type) {
       case ADD_POST: {
         return {
-          ...state,
-          mainPosts: [dummyPost, ...state.mainPosts],
+          ...state,   // 불변성을 지킴.
+          mainPosts: [dummyPost, ...state.mainPosts], // 새 데이터를 앞에다 추가해야 가장 상단에 추가.
           postAdded: true,
         };
       }
