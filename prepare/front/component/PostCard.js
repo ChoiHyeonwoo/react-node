@@ -1,10 +1,15 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Card, Popover, Button, Avatar, List, Comment } from 'antd';
 import { RetweetOutlined, HeartOutlined, MessageOutlined, EllipsisOutlined, HeartTwoTone } from '@ant-design/icons';
 import PostImages from './PostImages';
 import CommentForm from './CommentForm';
+
+const CardWrapper = styled.div`
+  margin-bottom: 20px;
+`;
 
 const PostCard = ({ post }) => {
     const id = useSelector((state) => state.user.me && state.user.me.id);
@@ -18,11 +23,10 @@ const PostCard = ({ post }) => {
     const onToggleLike = useCallback(() => {
         setLiked((prev) => !prev);
     }, []);
-    
     return (
-        <div style={{ marginBottom: 20 }}>
-            <Card 
-                corver={post.Images[0] && <PostImages images={post.Images} />}
+        <CardWrapper key={post.id}>
+        <Card
+            cover={post.Images[0] && <PostImages images={post.Images} />}
                 actions={[      // jsx안에 배열은 무조건 key 를 붙여주자
                     <RetweetOutlined key="retweet" />,
                     liked 
@@ -70,7 +74,7 @@ const PostCard = ({ post }) => {
                     />
                 </div>
             )}
-        </div>
+        </CardWrapper>
     );
 };
 

@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import { PlusOutlined } from '@ant-design/icons';
 
 const PostImages = ({ images }) => {
+    console.log(images.length);
     const [showImagesZoom, setShowImagesZoom] = useState(false);
 
     const onZoom = useCallback(() => {
-        setShowImagesZoom(true);
+      setShowImagesZoom(true);
+    }, []);
+  
+    const onClose = useCallback(() => {
+      setShowImagesZoom(false);
     }, []);
 
     if (images.length === 1) {
@@ -26,8 +31,8 @@ const PostImages = ({ images }) => {
             </>
         );
     }
-
-    return (
+    
+    return (        
         <>
             <div>
                 <img src={images[0].src} width="50%" onClick={onZoom} />
