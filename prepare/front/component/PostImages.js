@@ -12,9 +12,7 @@ const PostImages = ({ images }) => {
     if (images.length === 1) {
         return (
             <>
-                <div>
-                    <img role="presentation" src={images[0].src}  alt={images[0].src} onClick={onZoom} />
-                </div>
+                <img src={images[0].src} onClick={onZoom} />
             </>
         );
     }
@@ -22,8 +20,8 @@ const PostImages = ({ images }) => {
         return (
             <>
                 <div>
-                    <img role="presentation" style={{ width: '50%' }} src={images[0].src}  alt={images[0].src} onClick={onZoom} />
-                    <img role="presentation" style={{ width: '50%' }} src={images[1].src}  alt={images[1].src} onClick={onZoom} />
+                    <img src={images[0].src} width="50%" onClick={onZoom} />
+                    <img src={images[1].src} width="50%" onClick={onZoom} />
                 </div>
             </>
         );
@@ -32,7 +30,7 @@ const PostImages = ({ images }) => {
     return (
         <>
             <div>
-                <img role="presentation" style={{ width: '50%' }} src={images[1].src}  alt={images[1].src} onClick={onZoom} />
+                <img src={images[0].src} width="50%" onClick={onZoom} />
                 <div 
                     role="presentation"
                     style={{ display: 'inline-block', width: '50%', textAlign: 'center', verticalAlign: 'middle' }}
@@ -49,7 +47,9 @@ const PostImages = ({ images }) => {
 };
 
 PostImages.propTypes = {
-    images: PropTypes.arrayOf(PropTypes.object),
-};
+    images: PropTypes.arrayOf(PropTypes.shape({
+      src: PropTypes.string,
+    })).isRequired,
+  };
 
 export default PostImages;

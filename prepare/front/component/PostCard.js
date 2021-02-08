@@ -18,6 +18,7 @@ const PostCard = ({ post }) => {
     const onToggleLike = useCallback(() => {
         setLiked((prev) => !prev);
     }, []);
+    
     return (
         <div style={{ marginBottom: 20 }}>
             <Card 
