@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { PlusOutlined } from '@ant-design/icons';
 
+import ImagesZoom from './ImagesZoom';
+
 const PostImages = ({ images }) => {
     console.log(images.length);
     const [showImagesZoom, setShowImagesZoom] = useState(false);
@@ -18,6 +20,7 @@ const PostImages = ({ images }) => {
         return (
             <>
                 <img src={images[0].src} onClick={onZoom} />
+                {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
             </>
         );
     }
@@ -27,6 +30,7 @@ const PostImages = ({ images }) => {
                 <div>
                     <img src={images[0].src} width="50%" onClick={onZoom} />
                     <img src={images[1].src} width="50%" onClick={onZoom} />
+                    {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
                 </div>
             </>
         );
@@ -44,9 +48,9 @@ const PostImages = ({ images }) => {
                     <PlusOutlined />
                     <br />
                     {images.length - 1}개 사진 더보기
-
                 </div>
             </div>
+            {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
         </>
     );
 };
