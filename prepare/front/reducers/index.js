@@ -3,12 +3,13 @@ import { combineReducers } from 'redux';
 
 import user from './user';
 import post from './post';
-// combineReducers -> reducer(함수)를 합치는
-// HYDRATE -> redux의 SSR(Server Side Rendering)을 위해
+
+// (이전상태, 액션) => 다음상태
 const rootReducer = combineReducers({
   index: (state = {}, action) => {
     switch (action.type) {
       case HYDRATE:
+        console.log('HYDRATE', action);
         return { ...state, ...action.payload };
       default:
         return state;

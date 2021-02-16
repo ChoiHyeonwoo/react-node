@@ -1,24 +1,26 @@
-// pages 들의 공통 분모를 처리
 import React from 'react';
-import PropTypes from 'prop-types';
 import Head from 'next/head';
-import 'antd/dist/antd.css';
+import PropTypes from 'prop-types';
 import withReduxSaga from 'next-redux-saga';
-import wrapper from '../store/configureStore'
+import 'antd/dist/antd.css';
 
-const NodeBird = ({ Component }) => {
-    return (
-        <>
-           <Head>
-               <title>NodeBird</title>
-            </Head>         
-            <Component />
-        </>
-    );
-}
+import wrapper from '../store/configureStore';
+
+const NodeBird = ({ Component }) => (
+  <>
+    <Head>
+      <title>NodeBird</title>
+    </Head>
+    <Component />
+  </>
+);
 
 NodeBird.propTypes = {
-    Component: PropTypes.elementType.isRequired,
+  Component: PropTypes.elementType.isRequired,
+};
+
+export function reportWebVitals(metric) {
+  console.log(metric);
 }
 
 export default wrapper.withRedux(withReduxSaga(NodeBird));
